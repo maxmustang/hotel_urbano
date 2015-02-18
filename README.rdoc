@@ -1,0 +1,4 @@
+rodando o solr
+
+  rake sunspot:solr:stop
+  rake sunspot:solr:start
