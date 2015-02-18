@@ -138,7 +138,8 @@
     </updateLog>
 
      <autoCommit> 
-       <maxTime>15000</maxTime> 
+       <maxDocs>10000</maxDocs>
+       <maxTime>20000</maxTime>
        <openSearcher>false</openSearcher> 
      </autoCommit>
 

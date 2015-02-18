@@ -13,3 +13,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+solr/default/data/tlog/
+solr/default/data/index/
