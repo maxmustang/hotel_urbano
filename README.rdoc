@@ -2,3 +2,5 @@ rodando o solr
 
   rake sunspot:solr:stop
   rake sunspot:solr:start
+
+  https://github.com/sunspot/sunspot/issues/351

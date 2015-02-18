@@ -3,13 +3,13 @@ class Hotel
 	include Sunspot::Mongoid2
 
 	field :name
-	field :city, type: String
+	field :city
 	field :state, type: String
 	field :country, type: String
 
 	searchable do
     	text :name
-    	string :city
+    	text :city
   	end
 
 	def get_location
@@ -24,15 +24,6 @@ class Hotel
 	end
 
 	def self.find_by_city_or_name search
-		Hotel.search do 
-    		any_of do
-      			with(:name, search)
-      			with(:city, search)
-    		end
-  		end
-	end
-
-	def self.teste search
 		Hotel.search do 
     		fulltext "#{search}"
   		end
