@@ -12,6 +12,14 @@ class Hotel
     	text :city
   	end
 
+  	embeds_many :periods
+
+  	def add_periods period
+  		if period.available_on @periods
+  			@periods << period
+  		end
+  	end
+
 	def get_location
 		"#{city}, #{state}, #{country}"
 	end
