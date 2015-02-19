@@ -23,10 +23,12 @@ gem 'jquery-rails'
 
 #Solr
 gem 'sunspot_rails'
+gem 'sunspot_solr'
  
-group :development do
-    gem 'sunspot_solr'
+group :development, :test do
+	gem 'sunspot_matchers'
     gem 'rspec-rails'
+    gem 'database_cleaner', :github => 'bmabey/database_cleaner'
 end
 
 gem 'rspec'
