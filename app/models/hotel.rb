@@ -23,7 +23,7 @@ class Hotel
 		})
 	end
 
-	def self.find_by_city_or_name search
+	def self.find_by_city_or_name search #autocomplete
 		Hotel.search do 
     		fulltext "#{search}"
   		end
@@ -32,5 +32,4 @@ class Hotel
 	def to_s
 		"#{name} - #{get_location}"
 	end
-
 end

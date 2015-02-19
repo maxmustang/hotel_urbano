@@ -16,6 +16,8 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'database_cleaner'
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -39,6 +41,23 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
+
+  # config.before(:suite) do
+  #   DatabaseCleaner[:mongoid].strategy = :truncation
+  #   DatabaseCleaner[:mongoid].clean_with(:truncation)
+  # end
+
+  # config.before(:each) do
+  #   # DatabaseCleaner.start
+  #   DatabaseCleaner.clean
+  # end
+
+  config.before do
+    Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+  end
+
+  # config.include SunspotMatchers
+
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
