@@ -1,6 +1,25 @@
-rodando o solr
+#rodando o solr
 
-  rake sunspot:solr:stop
-  rake sunspot:solr:start
+	rake sunspot:solr:stop
+	rake sunspot:solr:start
 
-  https://github.com/sunspot/sunspot/issues/351
+	https://github.com/sunspot/sunspot/issues/351
+
+#Database cleaner
+	http://blog.codelette.com/2013/07/07/make-rspec-clean-up-mongoid-records/
+
+#Sunspot Matchers (Mock do solr)
+	https://github.com/pivotal/sunspot_matchers
+
+#Let
+	https://www.relishapp.com/rspec/rspec-core/docs/helper-methods/let-and-let
+
+
+FactoryGirl
+Guard
+
+periodo 1 : 10 - 20
+periodo 2: 25 - 30
+estadia: 10 - 30
+estadia: 18 - 22
+24 - 28
