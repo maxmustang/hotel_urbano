@@ -43,24 +43,29 @@ describe Hotel do
 	end
 
 	describe "#add_periods" do
-
-		before do
-			p = Period.new(check_in: Date.today, check_out: Date.today + 10)
-			hotel.periods << p
+	
+		it "will add a period" do
+			hotel.add_periods Period.new(check_in: Date.today + 5, check_out: Date.today + 15)
+			expect(hotel.periods.size).to eq 1
 		end
 
-		context "que meu hotel tem 1 periodo" do
-			it "nao deve deixar inserir um periodo com check_in sobreposto" do
+		context "hotel already has a period but wanna add another period " do
+			before do
+				p = Period.new(check_in: Date.today, check_out: Date.today + 10)
+				hotel.periods << p
+			end
+
+			it "can't add a period when it overrides another check_in " do
 				hotel.add_periods Period.new(check_in: Date.today + 5, check_out: Date.today + 15)
 				expect(hotel.periods.size).to eq 1
 			end
 
-			it "nao deve deixar inserir um periodo com check_out sobreposto" do
+			it "can't add a period when it overrides another check_out" do
 				hotel.add_periods Period.new(check_in: Date.today - 5, check_out: Date.today + 5)
 				expect(hotel.periods.size).to eq 1
 			end
 
-			it "deveria inserir em data nao sobreposta" do
+			it "will add a period when does not override any check_in or check_out from the hotel periods" do
 				hotel.add_periods Period.new(check_in: Date.today + 12, check_out: Date.today + 15)
 				expect(hotel.periods.size).to eq 2
 			end

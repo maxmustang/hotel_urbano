@@ -15,7 +15,10 @@ class Hotel
   	embeds_many :periods
 
   	def add_periods period
-  		if period.available_on @periods
+
+  		if not @periods
+  			@periods = [period]
+  		elsif period.available_on @periods
   			@periods << period
   		end
   	end

@@ -8,15 +8,27 @@ class Period
 
 	embedded_in :hotel
 
-	def available_on periods #todo me melhore
+	def available_on periods 
 		periods.any? { |p| 
-			# (p.check_in < @check_in and p.check_out > @check_in) or (p.check_in < @check_out and p.check_out > @check_out)
-			!((@check_in > p.check_in and @check_in < p.check_out) or (@check_out > p.check_in and @check_out < p.check_out))
+			!invalid_perid? p
 		}
 	end
 	
 	def to_s
-		"check_in: #{check_in}, check_out: #{check_out}"
+		"Period in check_in: #{check_in}, check_out: #{check_out}"
+	end
+
+	private 
+	def invalid_perid? period
+		valid_check_in_on_period? period or valid_check_out_on_period? period
+	end
+
+	def valid_check_in_on_period? period
+		(@check_in > period.check_in and @check_in < period.check_out)
+	end 
+
+	def valid_check_out_on_period? period
+		(@check_out > period.check_in and @check_out < period.check_out)
 	end
 
 end
