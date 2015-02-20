@@ -21,9 +21,3 @@
 
 FactoryGirl
 Guard
-
-periodo 1 : 10 - 20
-periodo 2: 25 - 30
-estadia: 10 - 30
-estadia: 18 - 22
-24 - 28
