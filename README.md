@@ -22,5 +22,6 @@
 	https://www.relishapp.com/rspec/rspec-core/docs/helper-methods/let-and-let
 
 
-FactoryGirl
-Guard
+#FactoryGirl
+
+#Guard
