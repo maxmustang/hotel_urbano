@@ -10,21 +10,21 @@ describe Period do
 		end
 	end
 
-	describe "#available_on" do
+	describe "#available_on?" do
 		before do
 			periods << Period.new(check_in: Date.today + 5, check_out: Date.today + 15)
 		end
 
 		it "check_in its between the check_in and check_out of the hotel periods" do
-			expect(period.available_on periods).to eq false
+			expect(period.available_on? periods).to eq false
 		end
 
 		it "check_out its between the check_in and check_out of the hotel periods" do
-			expect(period.available_on periods).to eq false
+			expect(period.available_on? periods).to eq false
 		end
 
 		it "check_out and check_in its not on the hotel periods" do
-			expect(period.available_on [Period.new(check_in: Date.today - 5, check_out: Date.today )]).to eq true
+			expect(period.available_on? [Period.new(check_in: Date.today - 5, check_out: Date.today )]).to eq true
 		end 
 	end
 end

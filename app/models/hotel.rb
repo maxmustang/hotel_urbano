@@ -1,24 +1,17 @@
 class Hotel
 	include Mongoid::Document
-	include Sunspot::Mongoid2
-
+	
 	field :name
 	field :city
 	field :state, type: String
 	field :country, type: String
 
-	searchable do
-    	text :name
-    	text :city
-  	end
-
   	embeds_many :periods
 
   	def add_periods period
-
-  		if not @periods
-  			@periods = [period]
-  		elsif period.available_on @periods
+  		if @periods.empty?
+  			@periods << period
+  		elsif period.available_on? @periods
   			@periods << period
   		end
   	end
@@ -27,17 +20,21 @@ class Hotel
 		"#{city}, #{state}, #{country}"
 	end
 
-	def self.find_on_period(check_in, check_out)
-		Hotel.where({
-			'periods.check_in' => check_in,
-			'periods.check_out' => check_out
-		})
+	def self.find_on_period search_term, check_in, check_out
+		hotels = find_by_city_or_name search_term
+
+		filtered_hotels = []
+
+		hotels.each do |hotel|
+			hotel.periods.each do |period|
+				filtered_hotels << hotel if period.check_in <= check_in and period.check_out >= check_out
+			end
+		end
+		filtered_hotels
 	end
 
-	def self.find_by_city_or_name search #autocomplete
-		Hotel.search do 
-    		fulltext "#{search}"
-  		end
+	def self.find_by_city_or_name search
+		Hotel.any_of(name: /#{search}/i).any_of(city: /#{search}/i)
 	end
 
 	def to_s

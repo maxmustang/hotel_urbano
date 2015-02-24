@@ -47,14 +47,14 @@ RSpec.configure do |config|
   #   DatabaseCleaner[:mongoid].clean_with(:truncation)
   # end
 
-  # config.before(:each) do
-  #   # DatabaseCleaner.start
-  #   DatabaseCleaner.clean
-  # end
-
-  config.before do
-    Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+  config.before(:each) do
+    # DatabaseCleaner.start
+    DatabaseCleaner.clean
   end
+
+  # config.before do
+  #   Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+  # end
 
   # config.include SunspotMatchers
 
