@@ -1,4 +1,8 @@
 HotelUrbano::Application.routes.draw do
+  # /hotels/in/rio/from/2015-02-22/to/2015-03-1
+  # get "/hotels/in/:search_term/from/:check_in/to/:check_out", to: 'hotels#index'
+
+  get '/hotels', to: 'hotels#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
