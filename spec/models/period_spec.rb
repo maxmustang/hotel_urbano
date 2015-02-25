@@ -23,8 +23,26 @@ describe Period do
 			expect(period.available_on? periods).to eq false
 		end
 
-		it "check_out and check_in its not on the hotel periods" do
-			expect(period.available_on? [Period.new(check_in: Date.today - 5, check_out: Date.today )]).to eq true
-		end 
+		it "nao tendo buraco, o periodo estaria valido" do
+			periods = [
+				Period.new(check_in: Date.parse('15-02-2015'), check_out: Date.parse('20-02-2015')),
+				Period.new(check_in: Date.parse('21-02-2015'), check_out: Date.parse('25-02-2015'))
+			]
+
+			period1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('14-02-2015'))
+
+			expect(period1.available_on? periods).to eq true
+		end
+
+		it "tendo buraco, o periodo estaria valido?" do
+			periods = [
+				Period.new(check_in: Date.parse('15-02-2015'), check_out: Date.parse('20-02-2015')), 
+				Period.new(check_in: Date.parse('21-02-2015'), check_out: Date.parse('25-02-2015'))
+			]
+
+			period1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('12-02-2015'))
+
+			expect(period1.available_on? periods).to eq false
+		end
 	end
 end

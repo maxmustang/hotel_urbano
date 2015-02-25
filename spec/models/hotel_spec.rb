@@ -62,54 +62,82 @@ describe Hotel do
 	describe "#add_periods" do
 	
 		it "will add a period" do
-			hotel.add_periods Period.new(check_in: Date.today + 5, check_out: Date.today + 15)
+			hotel.add_periods Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('25-02-2015'))
 			expect(hotel.periods.count).to eq 1
 		end
 
 		context "hotel already has a period but wanna add another period " do
 			before do
-				p = Period.new(check_in: Date.today, check_out: Date.today + 10)
+				p = Period.new(check_in: Date.parse('4-02-2015'), check_out: Date.parse('20-02-2015'))
 				hotel.periods << p
 			end
 
-			it "can't add a period when it overrides another check_in " do
-				hotel.add_periods Period.new(check_in: Date.today + 5, check_out: Date.today + 15)
+			it "when it overrides another check_in " do
+				hotel.add_periods Period.new(check_in: Date.parse('3-02-2015'), check_out: Date.parse('14-02-2015'))
 				expect(hotel.periods.size).to eq 1
 			end
 
-			it "can't add a period when it overrides another check_out" do
-				hotel.add_periods Period.new(check_in: Date.today - 5, check_out: Date.today + 5)
+			it "it overrides another check_out" do
+				hotel.add_periods Period.new(check_in: Date.parse('9-02-2015'), check_out: Date.parse('18-02-2015'))
 				expect(hotel.periods.size).to eq 1
 			end
 
-			it "will add a period when does not override any check_in or check_out from the hotel periods" do
-				hotel.add_periods Period.new(check_in: Date.today + 12, check_out: Date.today + 15)
+			it "when does not override any check_in or check_out from the hotel periods" do
+				hotel.add_periods Period.new(check_in: Date.parse('21-02-2015'), check_out: Date.parse('27-02-2015'))
 				expect(hotel.periods.size).to eq 2
 			end
 		end
+	end
 
-		describe "#find_on_period" do
-			context "when a search period is in a hotel saved period" do
-				before do 
-					p1 = Period.new(check_in: Date.today, check_out: Date.today + 10)
-					hotel.add_periods p1
-				end
-				it "find all hotels that matches" do 
-					hotels = Hotel.find_on_period "cancun", Date.today, Date.today + 2
-					expect(hotels.count).to eq 1
-				end
+	describe "#find_on_period" do
+		context "when a search period is in a hotel saved period" do
+			before do 
+				p1 = Period.new(check_in: Date.today, check_out: Date.today + 10)
+				hotel.add_periods p1
+				hotel.save!
+			end
+			it "find all hotels that matches" do 
+				puts "find all hotels that matches"
+				hotels = Hotel.find_on_period "cancun", Date.today, Date.today + 2
+				expect(hotels.count).to eq 1
 			end
 		end
+
 		context "when a search period does not match with any save periods" do
 			# dado: 10 a 15
 			# buscado: 16 a 20
 			# nao deve retornar nada
+			before do 
+				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02.2015'))
+				hotel.add_periods p1
+			end
+
+			it "should find none" do
+				puts "should find none" 
+				hotels = Hotel.find_on_period "cancun", Date.parse('16-02-2015'), Date.parse('20-02-2015')
+				expect(hotels.count).to eq 0
+			end
 		end
+
 		context "when a search period is in between 2 periods in a row" do
 			# dado: [10-15, 16-20]
 			# buscado: 12 a 18
 			# deve retornar
+			before do 
+				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02.2015'))
+				p2 = Period.new(check_in: Date.parse('16-02-2015'), check_out: Date.parse('18-02.2015'))
+				hotel.add_periods p1
+				hotel.add_periods p2
+				hotel.save!
+			end
+
+			it "should find " do 
+				puts "should find " 
+				hotels = Hotel.find_on_period "cancun", Date.parse('12-02-2015'), Date.parse('18-02-2015')
+				expect(hotels.count).to eq 2
+			end
 		end
+
 		context "when a search period is in between 2 periods in a row, should not returns" do
 			# dado: [10-15, 18-20]
 			# buscado: 12 a 18

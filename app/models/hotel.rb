@@ -9,10 +9,10 @@ class Hotel
   	embeds_many :periods
 
   	def add_periods period
-  		if @periods.empty?
-  			@periods << period
-  		elsif period.available_on? @periods
-  			@periods << period
+  		if periods.empty?
+  			periods.push period
+  		elsif period.available_on? periods
+  			periods << period
   		end
   	end
 
@@ -24,8 +24,11 @@ class Hotel
 		hotels = find_by_city_or_name search_term
 
 		filtered_hotels = []
-
+	
 		hotels.each do |hotel|
+			puts hotel.periods
+			puts "zueira ai"
+			puts hotel.periods.min_by(&:check_in)
 			hotel.periods.each do |period|
 				filtered_hotels << hotel if period.check_in <= check_in and period.check_out >= check_out
 			end
