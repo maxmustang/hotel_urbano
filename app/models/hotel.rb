@@ -26,11 +26,12 @@ class Hotel
 		filtered_hotels = []
 	
 		hotels.each do |hotel|
-			puts hotel.periods
-			puts "zueira ai"
-			puts hotel.periods.min_by(&:check_in)
-			hotel.periods.each do |period|
-				filtered_hotels << hotel if period.check_in <= check_in and period.check_out >= check_out
+			if not hotel.periods.empty?
+				higher_check_out = hotel.periods.max_by(&:check_out)
+
+				lower_check_in = hotel.periods.min_by(&:check_in)
+				
+				filtered_hotels << hotel if check_in >= lower_check_in.check_in && check_out <= higher_check_out.check_out
 			end
 		end
 		filtered_hotels

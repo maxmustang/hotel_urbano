@@ -97,7 +97,6 @@ describe Hotel do
 				hotel.save!
 			end
 			it "find all hotels that matches" do 
-				puts "find all hotels that matches"
 				hotels = Hotel.find_on_period "cancun", Date.today, Date.today + 2
 				expect(hotels.count).to eq 1
 			end
@@ -113,7 +112,6 @@ describe Hotel do
 			end
 
 			it "should find none" do
-				puts "should find none" 
 				hotels = Hotel.find_on_period "cancun", Date.parse('16-02-2015'), Date.parse('20-02-2015')
 				expect(hotels.count).to eq 0
 			end
@@ -128,13 +126,12 @@ describe Hotel do
 				p2 = Period.new(check_in: Date.parse('16-02-2015'), check_out: Date.parse('18-02.2015'))
 				hotel.add_periods p1
 				hotel.add_periods p2
-				hotel.save!
 			end
 
 			it "should find " do 
-				puts "should find " 
 				hotels = Hotel.find_on_period "cancun", Date.parse('12-02-2015'), Date.parse('18-02-2015')
-				expect(hotels.count).to eq 2
+				puts hotels[0]
+				expect(hotels.count).to eq 1
 			end
 		end
 
@@ -142,6 +139,16 @@ describe Hotel do
 			# dado: [10-15, 18-20]
 			# buscado: 12 a 18
 			# deve nao retornar pois existe buraco
+			before do 
+				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02.2015'))
+				p2 = Period.new(check_in: Date.parse('18-02-2015'), check_out: Date.parse('20-02.2015'))
+				hotel.add_periods p1
+				hotel.add_periods p2
+			end
+			it "should find none " do 
+				hotels = Hotel.find_on_period "cancun", Date.parse('12-02-2015'), Date.parse('18-02-2015')
+				expect(hotels.count).to eq 0
+			end
 		end
 	end
 end
