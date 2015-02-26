@@ -23,7 +23,7 @@ describe Period do
 			expect(period.available_on? periods).to eq false
 		end
 
-		it "nao tendo buraco, o periodo estaria valido" do
+		it "without a void space, the period should be valid" do
 			periods = [
 				Period.new(check_in: Date.parse('15-02-2015'), check_out: Date.parse('20-02-2015')),
 				Period.new(check_in: Date.parse('21-02-2015'), check_out: Date.parse('25-02-2015'))
@@ -34,7 +34,7 @@ describe Period do
 			expect(period1.available_on? periods).to eq true
 		end
 
-		it "tendo buraco, o periodo estaria valido?" do
+		it "with a void, the period shouldnt be valid" do
 			periods = [
 				Period.new(check_in: Date.parse('15-02-2015'), check_out: Date.parse('20-02-2015')), 
 				Period.new(check_in: Date.parse('21-02-2015'), check_out: Date.parse('25-02-2015'))

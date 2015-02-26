@@ -31,32 +31,29 @@ class Period
 		period_with_higher_check_out = periods.max_by(&:check_in)
 
 		if check_out_is_higher_than_check_in? period_with_lower_check_in or check_in_is_higher_than_check_out? period_with_higher_check_out
-			return false
+			false
 		else 
-			return true
+			true
 		end
 			
 	end
 
 	def check_out_is_higher_than_check_in? period
-		check_out == period.check_in - 1
+		check_out == get_before_min_check_in_day(period)
 	end
 
 	def check_in_is_higher_than_check_out? period
-		check_in == period.check_out + 1
+		check_in == get_after_max_check_out_day(period)
 	end
 
-	# def invalid_perid? period
-	# 	check_in_is_on_the_correct_period? period or check_out_is_on_the_correct_period? period
-	# end
+	def get_before_min_check_in_day period
+		period.check_in.yesterday
+	end
 
-	# def check_in_is_on_the_correct_period? period
-	# 	(check_in > period.check_in and check_in < period.check_out)
-	# end 
+	def get_after_max_check_out_day period
+		period.check_out.tomorrow
+	end
 
-	# def check_out_is_on_the_correct_period? period
-	# 	(check_out > period.check_in and check_out < period.check_out)
-	# end
 
 	def check_out_must_be_greater_than_check_in
 		if check_out < check_in
