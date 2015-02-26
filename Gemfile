@@ -27,11 +27,13 @@ gem 'sunspot_solr'
  
 group :development, :test do
 	gem 'sunspot_matchers'
-    gem 'rspec-rails'
-    gem 'database_cleaner', :github => 'bmabey/database_cleaner'
-    gem 'guard'
-     gem 'guard-rspec', require: false
+  gem 'rspec-rails'
+  gem 'database_cleaner', :github => 'bmabey/database_cleaner'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
+
+gem 'jbuilder'
 
 gem 'rspec'
 
