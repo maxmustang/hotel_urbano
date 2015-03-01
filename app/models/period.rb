@@ -39,21 +39,12 @@ class Period
 	end
 
 	def check_out_is_higher_than_check_in? period
-		check_out == get_before_min_check_in_day(period)
+		check_out == period.check_in.yesterday
 	end
 
 	def check_in_is_higher_than_check_out? period
-		check_in == get_after_max_check_out_day(period)
+		check_in == period.check_out.tomorrow
 	end
-
-	def get_before_min_check_in_day period
-		period.check_in.yesterday
-	end
-
-	def get_after_max_check_out_day period
-		period.check_out.tomorrow
-	end
-
 
 	def check_out_must_be_greater_than_check_in
 		if check_out < check_in

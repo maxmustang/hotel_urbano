@@ -102,12 +102,12 @@ describe Hotel do
 			end
 		end
 
-		context "when a search period does not match with any save periods" do
+		context "when a search period does not match with any saved periods" do
 			# dado: 10 a 15
 			# buscado: 16 a 20
 			# nao deve retornar nada
 			before do 
-				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02.2015'))
+				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02-2015'))
 				hotel.add_periods p1
 			end
 
@@ -122,15 +122,14 @@ describe Hotel do
 			# buscado: 12 a 18
 			# deve retornar
 			before do 
-				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02.2015'))
-				p2 = Period.new(check_in: Date.parse('16-02-2015'), check_out: Date.parse('18-02.2015'))
+				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02-2015'))
+				p2 = Period.new(check_in: Date.parse('16-02-2015'), check_out: Date.parse('18-02-2015'))
 				hotel.add_periods p1
 				hotel.add_periods p2
 			end
 
 			it "should find " do 
 				hotels = Hotel.find_on_period "cancun", Date.parse('12-02-2015'), Date.parse('18-02-2015')
-				puts hotels[0]
 				expect(hotels.count).to eq 1
 			end
 		end
@@ -140,8 +139,8 @@ describe Hotel do
 			# buscado: 12 a 18
 			# deve nao retornar pois existe buraco
 			before do 
-				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02.2015'))
-				p2 = Period.new(check_in: Date.parse('18-02-2015'), check_out: Date.parse('20-02.2015'))
+				p1 = Period.new(check_in: Date.parse('10-02-2015'), check_out: Date.parse('15-02-2015'))
+				p2 = Period.new(check_in: Date.parse('18-02-2015'), check_out: Date.parse('20-02-2015'))
 				hotel.add_periods p1
 				hotel.add_periods p2
 			end

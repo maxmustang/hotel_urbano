@@ -28,9 +28,7 @@ class Hotel
 		hotels.each do |hotel|
 			if not hotel.periods.empty?
 				higher_check_out = hotel.periods.max_by(&:check_out)
-
 				lower_check_in = hotel.periods.min_by(&:check_in)
-				
 				filtered_hotels << hotel if check_in >= lower_check_in.check_in && check_out <= higher_check_out.check_out
 			end
 		end
