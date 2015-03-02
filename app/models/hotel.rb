@@ -13,6 +13,8 @@ class Hotel
   			periods.push period
   		elsif period.available_on? periods
   			periods << period
+  		else
+  			raise "Periodo nao pode ser adicionado"
   		end
   	end
 

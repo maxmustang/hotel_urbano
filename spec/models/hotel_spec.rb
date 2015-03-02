@@ -73,12 +73,20 @@ describe Hotel do
 			end
 
 			it "when it overrides another check_in " do
-				hotel.add_periods Period.new(check_in: Date.parse('3-02-2015'), check_out: Date.parse('14-02-2015'))
+				p = Period.new(check_in: Date.parse('3-02-2015'), check_out: Date.parse('14-02-2015'))
+				expect{ hotel.add_periods p }.to raise_error
 				expect(hotel.periods.size).to eq 1
 			end
 
 			it "it overrides another check_out" do
-				hotel.add_periods Period.new(check_in: Date.parse('9-02-2015'), check_out: Date.parse('18-02-2015'))
+				p = Period.new(check_in: Date.parse('9-02-2015'), check_out: Date.parse('18-02-2015'))
+				expect{hotel.add_periods p }.to raise_error
+				expect(hotel.periods.size).to eq 1
+			end
+
+			it "should not have void on periods" do
+				p = Period.new(check_in: Date.parse('27-02-2015'), check_out: Date.parse('10-03-2015'))
+				expect{hotel.add_periods p }.to raise_error
 				expect(hotel.periods.size).to eq 1
 			end
 
@@ -133,8 +141,9 @@ describe Hotel do
 				expect(hotels.count).to eq 1
 			end
 		end
-
-		context "when a search period is in between 2 periods in a row, should not returns" do
+		
+		#faz sentido esse teste?
+		xcontext "when a search period is between 2 periods in a row, should not returns" do
 			# dado: [10-15, 18-20]
 			# buscado: 12 a 18
 			# deve nao retornar pois existe buraco
