@@ -6,17 +6,17 @@ class Hotel
 	field :state, type: String
 	field :country, type: String
 
-  	embeds_many :periods
+	embeds_many :periods
 
-  	def add_periods period
-  		if periods.empty?
-  			periods.push period
-  		elsif period.available_on? periods
-  			periods << period
-  		else
-  			raise "Periodo nao pode ser adicionado"
-  		end
-  	end
+	def add_periods period
+		if periods.empty?
+			periods.push period
+		elsif period.available_on? periods
+			periods << period
+		else
+			raise "Periodo nao pode ser adicionado"
+		end
+	end
 
 	def get_location
 		"#{city}, #{state}, #{country}"
