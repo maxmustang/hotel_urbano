@@ -1,1 +1,57 @@
-<strong>OI</strong>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Hotel Urbano Development</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		  <%= javascript_include_tag "application" %>
+		  <%= csrf_meta_tags %>
+	</head>
+	<body>
+
+		<header>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+			  <div class="container">
+			  	<div class="navbar-header">
+			      <a class="navbar-brand" href="#"> Hoteis </a>
+			    </div>
+			    <form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="cidade ou hotel">
+						<input type="text" class="form-control" placeholder="entrada">
+						<input type="text" class="form-control" placeholder="saída">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>	
+			  </div>
+			</nav>
+		</header>
+
+		<div class="container">
+			<div class="hotel-container">
+			    <div class="hotel-img"><img src="img/copacabana_palace.jpg" alt=""></div>
+			    <div class="text">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque dolorem autem sequi repellendus pariatur? Itaque ea est aspernatur magni nam iure deserunt perspiciatis dolores placeat voluptas maxime quisquam voluptatibus ullam.</p>
+			    </div>
+			</div>
+
+			<div class="hotel-container">
+			    <div class="hotel-img"><img src="img/Oasis_Palm_Beach.jpg" /></div>
+			    <div class="text">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque dolorem autem sequi repellendus pariatur? Itaque ea est aspernatur magni nam iure deserunt perspiciatis dolores placeat voluptas maxime quisquam voluptatibus ullam.</p>
+			    </div>
+			</div>
+
+			<div class="hotel-container">
+			    <div class="hotel-img"><img src="img/sem-imagem-hotel.jpg" alt=""></div>
+			    <div class="text">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque dolorem autem sequi repellendus pariatur? Itaque ea est aspernatur magni nam iure deserunt perspiciatis dolores placeat voluptas maxime quisquam voluptatibus ullam.</p>
+			    </div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
