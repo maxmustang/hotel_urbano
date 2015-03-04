@@ -5,6 +5,9 @@ class Hotel
 	field :city
 	field :state, type: String
 	field :country, type: String
+	field :image_path, type: String
+	field :description
+
 
 	embeds_many :periods
 
