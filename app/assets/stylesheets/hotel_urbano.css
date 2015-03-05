@@ -1,33 +1,46 @@
-* {margin:0;padding:0;box-sizing:border-box;}
-.hotel-container { 
-	width:100%;
-	display:table; 
-	margin-bottom: 10px; 
+*{margin:0;padding:0;box-sizing:border-box;}
+
+.date{
+	width: 16% !important;
+}
+
+.search{
+	width: 50% !important;
+}
+
+.navbar-inverse{
+	background-color: #003966;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff; 
+}
+
+footer {
+  padding: 30px 0;
+}
+
+body {
+  padding-top: 70px;
+}
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+.wrap {
+	display:table;
+	margin:10px 0;
 	border : 4px solid;
 	border-width: 4px 1px 1px 1px;
-	border-color: #003966 silver silver silver;
+	border-color: #003966 silver;
 }
-.hotel-container:first-child{ margin-top: 60px; }
-
-.hotel-image,.text {
+.img,.text {
 	vertical-align:top;
 }
-.hotel-image {
-	width:40%; 
-	background:red;
-	display:table-cell;
-}
-img {
-	display:block;
-	width:100%;
-}
-.text {
-	width:60%; 
-	/*background: blue;*/
-	display:table-cell;
-	padding:10px;
-}
-p {
-	font: Arial
-}
-
+.img {width:40%;display:table-cell;}
+img {height: 272px; display:block;width:100%;}
+.text {background-color:#fff; width:60%;display:table-cell;padding:10px;}
+p {color: #696969; font: Arial;}
+.text h2 {color: #003965;}
