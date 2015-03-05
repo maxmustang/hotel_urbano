@@ -4,4 +4,5 @@ json.hotels @hotels do |hotel|
   json.state hotel.state
   json.description hotel.description
   json.image_path hotel.image_path
+  json.location hotel.get_location
 end
