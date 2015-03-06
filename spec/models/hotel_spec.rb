@@ -59,6 +59,24 @@ describe Hotel do
 		end
 	end
 
+	describe "#get_destination" do
+		it "should list all the possible destination from city as searh term" do
+			destination = Hotel.get_destination 'cancun'
+			expect(destination.count).to eq 1
+		end
+
+		it "should list all the possible destination from hotels as searh term" do
+			destination = Hotel.get_destination 'Oasis'
+			expect(destination.count).to eq 2
+		end
+
+		it "should list all hotels and cities that contains the search term" do
+			Hotel.create(name:"Grand Cancun Palm", state:"Quintana Roo", city: "Cancun", country: "Mexico")
+			destination = Hotel.get_destination 'cancun'
+			expect(destination.count).to eq 2
+		end
+	end
+
 	describe "#add_periods" do
 	
 		it "will add a period" do

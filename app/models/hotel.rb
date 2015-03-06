@@ -26,7 +26,7 @@ class Hotel
 	end
 
 	def self.find_on_period search_term, check_in, check_out
-		hotels = find_by_city_or_name search_term
+		hotels = Hotel.find_by_city_or_name search_term
 
 		filtered_hotels = []
 	
@@ -40,8 +40,15 @@ class Hotel
 		filtered_hotels
 	end
 
-	def self.find_by_city_or_name search
-		Hotel.any_of(name: /#{search}/i).any_of(city: /#{search}/i)
+	def self.find_by_city_or_name search_term
+		Hotel.any_of({name: /#{search_term}/i}, {city: /#{search_term}/i})
+	end
+
+	def self.get_destination search
+		hotels = Hotel.any_of(name: /#{search}/i).distinct(:name)
+		cities = Hotel.any_of(city: /#{search}/i).distinct(:city)
+
+		hotels + cities
 	end
 
 	def to_s

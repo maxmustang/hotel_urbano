@@ -1,7 +1,5 @@
-if @hotels.size > 0
-	json.hotels @hotels do |hotel|
-	  json.name  hotel.name
-	end
+if @names.size > 0
+	json.names @names
 else
 	json.not_found "Nenhum hotel encontrado :("
 end

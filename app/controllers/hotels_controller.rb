@@ -4,7 +4,7 @@ class HotelsController < ActionController::Base
 	end
 
 	def destination
-		@hotels = Hotel.find_by_city_or_name params[:search_term]
+		@names = Hotel.get_destination params[:search_term]
 	end
 
 	def index
