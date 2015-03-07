@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "hotel_urbano_development.hotels", "name" : "_id_" }, { "v" : 1, "key" : { "name" : 1, "city" : 1 }, "ns" : "hotel_urbano_development.hotels", "name" : "name_1_city_1" } ] }
