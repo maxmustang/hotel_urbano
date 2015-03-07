@@ -2,6 +2,7 @@ run: get_mongo export_mongo setup_mongo restore setup_bundler run_rails
 
 get_mongo:
 	curl -O http://downloads.mongodb.org/linux/mongodb-linux-x86_64-3.0.0.tgz
+	tar -zxvf mongodb-linux-x86_64-3.0.0.tgz
 	mkdir -p mongodb
 	cp -R -n mongodb-linux-x86_64-3.0.0/ mongodb
 
