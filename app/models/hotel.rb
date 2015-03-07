@@ -54,4 +54,6 @@ class Hotel
 	def to_s
 		"#{name} - #{get_location}"
 	end
+
+	index({name:1, city:1})
 end
