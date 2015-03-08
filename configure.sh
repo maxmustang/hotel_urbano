@@ -1,6 +1,9 @@
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-
-sudo apt-get update
-sudo apt-get install -y mongodb-org
-sudo service mongod start
+echo 'Iniciando a instlacao do ruby 1.9.3'
+curl -sSL https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+rvm install 1.9.3
+echo 'Inciando a instalacao do mongo' 
+sudo apt-get install mongod
+mongorestore db/dump
+echo 'Inciando a instalacao do rubygems' 
+sudo apt-get install rubygems
