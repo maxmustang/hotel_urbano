@@ -1,8 +1,7 @@
-run: restore_dump setup_bundler run_rails
-
-restore_dump: 
-	mongorestore db/dump
+run: setup_bundler run_rails
+	
 setup_bundler:
 	gem install bundler
+	bundle
 run_rails:
 	rails s
