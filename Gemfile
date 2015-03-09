@@ -21,11 +21,11 @@ end
 gem 'jquery-rails'
 
 #Solr
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+# gem 'sunspot_rails'
+# gem 'sunspot_solr'
  
 group :development, :test do
-	gem 'sunspot_matchers'
+	# gem 'sunspot_matchers'
   gem 'rspec-rails'
   gem 'database_cleaner', :github => 'bmabey/database_cleaner'
   gem 'guard'
@@ -40,7 +40,7 @@ gem 'rspec'
 gem 'mongoid'
 gem 'bson_ext' 
 
-gem 'sunspot_mongoid2'
+# gem 'sunspot_mongoid2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
