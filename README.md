@@ -34,5 +34,9 @@
 
 #load_test
 	os testes de carga foram feitos com apache ab, as imagens e o graficos gerados para o teste de carga estao na pasta 'load_test' 
+	
+	![alt tag](load_test/benchmark.png)
+
+	![alt tag](load_test/load_test.jpg)
 
 
