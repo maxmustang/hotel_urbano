@@ -26,10 +26,10 @@
 			  	<div class="navbar-header">
 			      <a class="navbar-brand" href="/"> www.hotelurbano.com/hoteis </a>
 			    </div>
-			    <form class="navbar-form navbar-left">
+			    <form name='query' class="navbar-form navbar-left">
 					<div class="form-group">
-						<input type="text" class="form-control search"  autocomplete autofocus data-ng-model='searchTerm' placeholder="cidade ou hotel">
-						<input type="text" class="form-control date"  datepicker ng-model='checkIn' placeholder="entrada">
+						<input type="text" class="form-control search" required="Prenche o campo vai :D" name="searchTerm" autocomplete autofocus data-ng-model='searchTerm' placeholder="cidade ou hotel"/>
+						<input type="text" class="form-control date"  datepicker ng-model='checkIn' placeholder="entrada"/>
 						<input type="text" class="form-control date" datepicker ng-model='checkOut' min-date="{{checkIn}}" placeholder="saída">
 						<button class="btn btn-default"  value="buscar \o/" ng-click='findOnPeriod()'>buscar \o/</button>
 					</div>

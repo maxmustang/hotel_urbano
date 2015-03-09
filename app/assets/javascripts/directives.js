@@ -2,7 +2,7 @@ var hotelUrbano = angular.module('HotelUrbano', []);
 
 hotelUrbano.directive('datepicker', function() {
   var today = new Date();
-  var minDate = (today.getDay() + 1) + '/' + (today.getMonth() + 1)  +'/' + (today.getYear() + 1900)
+  var minDate = (today.getDate() + 1) + '/' + (today.getMonth() + 1)  +'/' + (today.getYear() + 1900)
   console.log(minDate)
   return function(scope, element, attrs) {
     element.datepicker({
