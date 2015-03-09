@@ -17,7 +17,7 @@ class Hotel
 		elsif period.available_on? periods
 			periods << period
 		else
-			raise "Periodo nao pode ser adicionado"
+			raise PeriodNotAdded.new("Periodo nao pode ser adicionado")
 		end
 	end
 
