@@ -1,27 +1,38 @@
-# hotel_urbano
+#Hotel_urbano
 
-#Coisas que estou aprendendo/aprendi durante o processo :D
-#rodando o solr
-	rake sunspot:solr:stop
-	rake sunspot:solr:start
+#versão Ruby and Rails 
+	Este projeto utiliza o na versão 1.9.3 e rails na 3.2.21
 
-	https://github.com/sunspot/sunspot/issues/351
+#rodando
+	é necessário dar necessário autorização ao arquivo configure.sh e depois roda-lo
+		chmod +x ./configure
+		./configure
+	após isso, basta chamar o make
+		make
+	o make rodara o hotel_urbano_development automaticamente na porta 3000
+		localhost:3000/
+	caso queria rodar apos o make
+		rails s
 
-#Database cleaner
-	http://blog.codelette.com/2013/07/07/make-rspec-clean-up-mongoid-records/
+#Hotels
+	Foram criadas cerca de 10 hoteis em duas cidades diferentes: Rio de Janeiro e Cancun
 
-#mongoid
-	http://mongoid.org/en/mongoid/v3/extras.html
+#Periods
+	Foram adicionados periodos de estadias ao hoteis baseados nas seguintes regras
+		1) Um periodo não pode sobreescrever o outro
+			entrada 10/3 - saida 14/4
+			Nao posso ter um periodo que sobrevesva outro ja esxistente, por exemplo: 12/3 - 17/3 ou 08/03 - 12/03
+		3) As datas dos periodos devem seguir uma linha reta
+			10/3 - 15/3, 16/3 - 20/3, 05/3 - 09/03
+		4) Um hotel pode ter quantos periodos quiser
 
-#Sunspot Matchers (Mock do solr)
-	https://github.com/sunspot/sunspot
-	https://github.com/pivotal/sunspot_matchers
-	http://pivotallabs.com/test-driven-fulltext-search-in-2-commits-with-solr-sunspot-and-sunspot_matchers/
+#Database
+	hotel_urbano utiliza o mongodb como database principal
 
-#Let
-	https://www.relishapp.com/rspec/rspec-core/docs/helper-methods/let-and-let
+#test
+	os testes unitarios foram criados usando rspec e guard
+
+#load_test
+	os testes de carga foram feitos com apache ab, as imagens e o graficos gerados para o teste de carga estao na pasta 'load_test' 
 
 
-#FactoryGirl
-
-#Guard
