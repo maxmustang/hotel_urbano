@@ -9,13 +9,7 @@
 		<%= stylesheet_link_tag "bootstrap" %>
 		<%= stylesheet_link_tag "hotel_urbano" %>
 		<%= stylesheet_link_tag "jquery-ui" %>
-		<%= stylesheet_link_tag "theme" %>
-
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
-
-		<%= javascript_include_tag "angular" %>
+		<%= stylesheet_link_tag "theme" %>k
 		<%= csrf_meta_tags %>
 
 	</head>
@@ -44,7 +38,7 @@
 				Período de <span ng-cloak>{{checkIn}}</span> a <span ng-cloak>{{checkOut}}</span>
 			</div>
 			<div class="wrap" ng-repeat="hotel in hotels">
-				<div class="img"><img ng-cloak src="{{hotel.image_path}}" alt=""></div>
+				<div class="img"><img ng-cloak ng-src="{{hotel.image_path}}" alt=""></div>
 			    <div class="text" ng-cloak>
 			        <p><h2>{{hotel.name}}</h2> - <span>{{hotel.location}}</span></p>
 			        <p >{{hotel.description}}</p>
@@ -53,13 +47,17 @@
 
 
 			<div class="wrap-error" ng-show="showMessage" ng-cloak>
-				<div class="img"><img src="/hotel/not_found.png" alt=""></div>
+				<div class="img"><img ng-src="/hotel/not_found.png" alt=""></div>
 			    <div class="text">
 			        <p><h2 ng-cloak>{{message}}</h2></p>
 			    </div>
 			    
 			</div>
 		</div>
+
+		<%= javascript_include_tag "jquery-1.8.2.min" %>
+		<%= javascript_include_tag "jquery-ui.min" %>
+		<%= javascript_include_tag "angular" %>
 		<%= javascript_include_tag "directives" %>
 		<%= javascript_include_tag "home.js" %>
 	</body>
