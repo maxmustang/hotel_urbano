@@ -26,6 +26,12 @@
 			10/3 - 15/3, 16/3 - 20/3, 05/3 - 09/03
 		4) Um hotel pode ter quantos periodos quiser
 
+#testando
+	Todos os periodos cadastrados tem data final como 30/03/2015, pode-se fazer a mesma busca utilizando a seguinte uri 
+		/hotels/in/cancun/from/10-03-2015/to/30-03-2015
+	ou algum hotel especifico
+		/hotels/in/Copacabana%20Rio%20Hotel/from/14-03-2015/to/16-03-2015
+
 #Database
 	hotel_urbano utiliza o mongodb como database principal
 
