@@ -17,7 +17,7 @@ function homeCtrl($scope, $http){
 			}else{
 				$scope.hotels = [];
 				$scope.showMessage = true
-				$scope.message = ':( descupe, hotel ou cidade com nome '+ $scope.searchTerm + ' nao pode ser encontrado'
+				$scope.message = ':( descupe, hotel ou cidade com nome '+ $scope.searchTerm + ' não pode ser encontrado no período solicitado'
 			}
 		});
 	}
